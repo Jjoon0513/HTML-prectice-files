@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동전 든지기</title>
+</head>
+<body>
+    <center>
+        <h1 class="bigtitle">동전 돌리그라</h1>
+        <button onclick="spincoinf()" class="spincoinin" style="display: block;">동전을 돌려요.</button>
+        <button onclick="cpencoinin()" class="opencoinin" style="display: none;">동전을 까요</button>
+        <button onclick="backupcoin()" class="askbackup" style="display: none;">함 뒤집을까?</button>
+    </center>
+</body>
+</html>
+
+<script>
+
+var askbackup = document.getElementsByClassName("askbackup")[0];
+var spcibt = document.getElementsByClassName("spincoinin")[0];
+var opcibt = document.getElementsByClassName("opencoinin")[0];
+var bigttle = document.getElementsByClassName("bigtitle")[0];
+var iscoinup = false
+var coinbackupcount = 0;
+
+function spincoinf() {
+    spcibt.style.display = "none";
+    opcibt.style.display = "inline";
+    askbackup.style.display = "inline";
+    if (Math.random() < 0.5){
+        iscoinup = true
+    }  
+    else {
+        iscoinup = false
+    } 
+    
+
+    bigttle.innerText= "동전은 돌려졌다 이기들아"
+    bigttle.style.color = "black"
+
+}
+
+function cpencoinin() {
+    if (iscoinup) {
+        bigttle.innerText= "응 동전 앞@면(그림)임."
+        bigttle.style.color = "green"
+    }
+    else {
+        bigttle.innerText= "응 동전 뒷@면(숫자)임"
+        bigttle.style.color = "blue"
+    }
+    iscoinup = false
+    spcibt.style.display = "block";
+    opcibt.style.display = "none";
+    askbackup.style.display = "none";
+    coinbackupcount = 0;
+}
+
+function backupcoin() { 
+    if (iscoinup) iscoinup = false; else iscoinup = true 
+    coinbackupcount++
+    
+    bigttle.innerText= "동전 " + coinbackupcount + "번 돌아갔어요잇"
+
+}
+
+
+</script>

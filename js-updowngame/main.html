@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>업 다 운 게 이</title>
+</head>
+<body>
+    <center>
+
+        <h1 class="bigtitle">업다운 게이</h1>
+
+        <button class="gogogo" style="display: inline;" onclick="letsgo()"> 마 시작해보자 이기야 </button>
+        
+        <label for="typenumbers" style="display: none;">누르세욥</label>
+        <input 
+        name="inputnumber"
+        id="typenumbers" 
+        type="number" 
+        style="display: none;" 
+        class="typenumber" 
+        onKeypress="javascript:if(event.keyCode==13) test()"
+        max="100"
+        min="1"
+        />
+
+        <div style="border: 1px solid black; width: 30%; height: 200px; margin: 10%;" class="trylist">
+
+            <h2 style="margin: 1px;" class="trybox">시도함</h2>
+            <h3 style="margin-top: 25%;" class="trytext"></h3>
+
+        </div>
+
+        <h2 class="highscoretext"> 하이스코어 : </h2>
+
+    </center>
+</body>
+</html>
+
+<script> 
+
+var bigtitle = document.getElementsByClassName("bigtitle")[0];
+var gogogos = document.getElementsByClassName("gogogo")[0];
+var typenumber = document.getElementsByClassName("typenumber")[0];
+var trylist = document.getElementsByClassName("trylist")[0];
+var trytext = document.getElementsByClassName("trytext")[0];
+var trybox = document.getElementsByClassName("trybox")[0];
+var highscoretext = document.getElementsByClassName("highscoretext")[0];
+var mainnumber = 0;
+var trynumber = 0;
+var inputnumber = 0;
+var highscore = 0;
+var maxnumber = 100;
+highscoretext.innerText = "하이스코어: 0" 
+
+
+function letsgo() {
+    typenumber.max = maxnumber
+    mainnumber = Math.floor(Math.random() * maxnumber + 1)
+    bigtitle.innerText="숫자는 정해졌다"
+    bigtitle.style.color= "black"
+    gogogos.style.display ="none"
+    typenumber.style.display="inline"
+    trybox.innerText = "시도함" 
+    trytext.innerText = ""
+    trynumber = 0
+    highscoretext.innerText = "하이스코어: " + highscore
+}
+
+function test() {
+    inputnumber = typenumber.value
+    trytext.innerText= inputnumber
+    trynumber++
+    if (inputnumber < mainnumber) {
+        bigtitle.innerText = "업 입니다만"
+        bigtitle.style.color= "red"
+
+        if (inputnumber < 1) {
+            bigtitle.innerText = "1 이상 입력 하라고ㅗㅗㅗㅗㅗㅗㅗ  "
+            bigtitle.style.color= "red"
+        }
+    }
+    else {
+        bigtitle.innerText = "다운 입니다만"
+        bigtitle.style.color= "blue"
+
+        if (inputnumber > maxnumber) {
+            bigtitle.innerText = maxnumber + " 이하 입력 하시라구요;;;;"
+            bigtitle.style.color= "red"
+        }
+        if (inputnumber == mainnumber) {
+            bigtitle.innerText = "오 님 마@춤!"
+            bigtitle.style.color= "green"
+            trybox.innerText = "시도 횟수" + trynumber + "회" 
+            trytext.innerText = "정답: " + mainnumber
+            gogogos.style.display ="inline"
+            typenumber.style.display="none"
+            if (highscore > trynumber) {
+                highscore = trynumber
+                highscoretext.innerText= "하이스코어 갱신! " + highscore + "회"
+            }
+                else if (highscore == 0) {
+                highscore = trynumber
+                highscoretext.innerText= "하이스코어 갱신!" + highscore + "회"
+            }
+        }
+        
+    }   
+    
+    
+}
+
+</script>

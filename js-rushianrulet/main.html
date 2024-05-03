@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    body {
+        margin: 30px;
+    }    
+    
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>니@운명 결정해드립니다</title>
+</head>
+<body>
+    <center>
+        <h1 class="dieorlife"> 버튼 눌러</h1>
+        <button onclick="choose()">니운명 결정함 ㅅㄱ</button>
+        <h3 class="pssay">0번 누름</h3>
+        <h5 class="psent">지금 x 퍼센트임</h5>
+    </center>
+</body>
+</html>
+<script> 
+var count = 0
+let ps = 0;
+let psset = ps;
+let psantsss = document.getElementsByClassName("psent")[0];
+psantsss.innerText="지금" + ps + "퍼센트 임 ㅋ";
+let x = document.getElementsByClassName("dieorlife")[0];
+let pssss = document.getElementsByClassName("pssay")[0];
+    
+function choose() {
+    count++
+
+    if (Math.random() < ps / 100) {
+
+        switch (Math.floor(Math.random() * 4 + 1)) {
+            case 1:
+                x.innerText="나가 뒤@져라";
+                break
+            case 2:
+                x.innerText="엄@;";
+                break
+            case 3:
+                x.innerText="응 맞아야@겠지?";
+                break
+            case 4:
+                x.innerText="ㅈ때@버렸노";
+                break
+            
+        }
+         
+        x.style.color="red";
+        ps = psset;
+    }
+    else {
+        x.innerText="행@복한!"; 
+        x.style.color="green";
+        ps = ps + Math.floor(Math.random() * 3)
+    }
+    psantsss.innerText="지금" + ps + "퍼센트 임 ㅋ";
+    pssss.innerText= count + "번 누름"
+}
+
+function textreload() {
+    psantsss.innerText="지금" + ps + "퍼센트 임 ㅋ";
+    pssss.innerText= count + "번 누름"
+}
+
+function textreset() {
+    count = 0;
+    pssss.innerText= count + "번 누름"
+}
+
+</script>
