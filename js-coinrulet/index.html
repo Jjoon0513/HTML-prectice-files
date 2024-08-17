@@ -58,7 +58,7 @@ function cpencoinin() {
 }
 
 function backupcoin() { 
-    if (iscoinup) iscoinup = false; else iscoinup = true 
+    iscoinup = !iscoinup;
     coinbackupcount++
     
     bigttle.innerText= "동전 " + coinbackupcount + "번 돌아갔어요잇"
